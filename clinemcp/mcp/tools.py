@@ -28,6 +28,17 @@ async def handle_cline_start(arguments: dict) -> str:
     cwd = arguments.get("cwd", os.environ.get("CLINE_DEFAULT_CWD", os.getcwd()))
     model = resolve_model(model=explicit_model, agent_type=agent_type)
 
+    # The task is passed to the Cline CLI as a positional argument. The CLI
+    # does not document "--" end-of-options support, so reject tasks that
+    # would be parsed as CLI flags (argument injection).
+    if task.startswith("-"):
+        return json.dumps({
+            "error": "Invalid task: must not start with '-'",
+            "session_id": None,
+            "status": None,
+            "started_at": None,
+        })
+
     # Check for active session (MVP: one at a time)
     store = SessionStore()
     await store.init_db()

@@ -140,7 +140,7 @@ async def start_session(
                         try:
                             await sessions.append_output(session_id, line)
                         except Exception as e:
-                            logger.error("runner.append_output_failed", error=str(e))
+                            logger.error(f"runner.append_output_failed: {e}")
 
                     # Drain stderr after stdout closes
                     stderr_bytes = await proc.stderr.read()
@@ -150,7 +150,7 @@ async def start_session(
                         try:
                             await sessions.append_output(session_id, err_line)
                         except Exception as e:
-                            logger.error("runner.append_stderr_failed", error=str(e))
+                            logger.error(f"runner.append_stderr_failed: {e}")
 
                 await proc.wait()
                 output = "".join(output_lines)

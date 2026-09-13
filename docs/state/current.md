@@ -20,6 +20,11 @@
 - **NSSM Service:** ClineMCP running
 - **Test Floor:** 42 passed, 0 failed, 0 skipped
 
+## Security Config
+- **Bind host:** `MCP_HOST`, default `127.0.0.1`. Set `MCP_HOST=0.0.0.0` (or a Tailscale/LAN IP) only if remote clients must connect.
+- **Auth:** `CLINEMCP_AUTH_TOKEN` required — with no token, `/sse` and `/messages/` return 401 and a startup warning is logged. `CLINEMCP_ALLOW_NO_AUTH=1` explicitly disables auth (development only).
+- **cline_start:** tasks beginning with `-` are rejected (prevents CLI flag injection).
+
 ## Architecture Verified
 - TOBOR (port 8001) and ClineMCP (port 8003) are **peers**
 - Cline subprocess is **child of ClineMCP only**
@@ -32,7 +37,7 @@
     "command": "C:\\Users\\cheat\\AppData\\Roaming\\npm\\mcp-remote.cmd",
     "args": [
         "http://localhost:8003/sse",
-        "--header", "Authorization: Bearer d8345b850f6ddc8f5bc14cae2bf596bcd22b6398eb4cb1ac0ddebab57c3ff457"
+        "--header", "Authorization: Bearer <redacted — see local env>"
     ]
 }
 ```
