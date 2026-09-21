@@ -23,7 +23,7 @@ logger = logging.getLogger("clinemcp")
 
 # Get config
 MCP_PORT = int(os.environ.get("MCP_PORT", "8003"))
-MCP_HOST = os.environ.get("MCP_HOST", "0.0.0.0")
+MCP_HOST = os.environ.get("MCP_HOST", "127.0.0.1")
 
 logger.info(f"Configuration loaded: MCP_PORT={MCP_PORT}, MCP_HOST={MCP_HOST}")
 logger.info(f"Working directory: {os.getcwd()}")

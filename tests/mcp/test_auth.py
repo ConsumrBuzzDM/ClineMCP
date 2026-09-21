@@ -58,10 +58,11 @@ class TestMissingToken:
 
 
 class TestNoTokenConfigured:
-    """When no token is configured, allow all."""
+    """When no token is configured, fail closed (401) unless explicitly opted out."""
 
     @pytest.mark.asyncio
     @patch.dict(os.environ, {}, clear=True)
-    async def test_no_token_configured_allows_all(self):
-        result = await verify_token_dependency(None)
-        assert result is True
+    async def test_no_token_configured_rejects(self):
+        with pytest.raises(HTTPException) as exc_info:
+            await verify_token_dependency(None)
+        assert exc_info.value.status_code == 401

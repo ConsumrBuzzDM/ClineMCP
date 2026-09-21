@@ -12,7 +12,7 @@ from mcp.server.lowlevel import Server
 from mcp.server.sse import SseServerTransport
 from mcp.types import TextContent
 
-from clinemcp.mcp.auth import verify_token_dependency
+from clinemcp.mcp.auth import log_auth_config, verify_token_dependency
 from clinemcp.runner import hub_watchdog
 from clinemcp.sessions import SessionStore
 
@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 # Get configuration from environment
 MCP_PORT = int(os.environ.get("MCP_PORT", "8003"))
-MCP_HOST = os.environ.get("MCP_HOST", "0.0.0.0")
+MCP_HOST = os.environ.get("MCP_HOST", "127.0.0.1")
 INSTANCE_ROLE = os.environ.get("INSTANCE_ROLE", "development")
 SERVER_NAME = "clinemcp"
 
@@ -32,6 +32,7 @@ ACTIVE_SESSIONS: set[str] = set()
 async def lifespan(app: FastAPI):
     """Server lifespan — init DB and cleanup on startup/shutdown."""
     # Startup
+    log_auth_config()
     store = SessionStore()
     await store.init_db()
 
@@ -129,11 +130,12 @@ def create_app() -> FastAPI:
             sse_transport = request.app.state.sse_transport
             mcp_server = request.app.state.mcp_server
 
-            logger.info(f"Starting SSE connection for session {session_id}")
-            logger.info(f"Request scope: {request.scope}")
-            logger.info(f"Request receive: {request.receive}")
-            logger.info(f"Request send: {getattr(request, '_send', 'not available')}")
-            
+            client = request.client.host if request.client else "unknown"
+            logger.info(
+                f"Starting SSE connection for session {session_id}: "
+                f"method={request.method} path={request.url.path} client={client}"
+            )
+
             # Use the proper send function from the scope
             async def send(message):
                 await request._send(message)
