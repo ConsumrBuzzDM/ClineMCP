@@ -36,6 +36,20 @@ sessions.db                SQLite session store
 AGENT_CONTRACT.md           binding pre-flight contract (read before changes)
 ```
 
+## Current state & next steps
+
+The SDD (`docs/sdd/ClineMCP_SDD_v0_1.md`) describes the v0.1 MVP scope;
+it's a fixed design spec, not a living tracker. Real growth since has
+gone well past "Phase 0" (76 tests now, not the 40 the contract
+originally targeted — fixed 2026-09-22) — a FastAPI MCP server,
+Telegram notifications, session enrichment, an `mcp.server.lowlevel`
+migration, and upstream merges (agent_type routing, a fail-closed auth
+security fix). No single doc tracks post-MVP state; `docs/adr/` (read-
+only, append-only) is the closest thing to a change log — check there
+and `git log` for what's actually landed beyond the SDD's original
+scope. `DirectiveQueueMCP` tracks live/queued work in
+`docs/directives/`.
+
 ## Setup
 
 ```bash
