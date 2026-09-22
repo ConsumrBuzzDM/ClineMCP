@@ -46,7 +46,7 @@ cp .env.example .env   # fill in required values; .env.local also supported
 ## Commands
 
 ```bash
-uv run pytest --tb=no -q      # pre-flight — must report 40 passed, 0 failed, 0 skipped (Phase 0 target)
+uv run pytest --tb=no -q      # pre-flight — must report 76 passed, 0 failed, 0 skipped
 ruff check .
 ```
 

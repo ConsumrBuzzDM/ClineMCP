@@ -6,7 +6,7 @@ It is a peer of TOBOR, not a child. Port 8003. Python 3.12. uv managed.
 
 ## Pre-flight (MANDATORY)
 uv run pytest --tb=no -q
-Must report: 40 passed, 0 failed, 0 skipped (Phase 0 target)
+Must report: 76 passed, 0 failed, 0 skipped
 If count differs: STOP.
 
 ## Read-only files
