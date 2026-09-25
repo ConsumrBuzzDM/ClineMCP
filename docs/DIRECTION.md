@@ -36,3 +36,16 @@ and self-report across restarts.
 
 - `AGENT_CONTRACT.md` (binding pre-flight contract), `AGENTS.md`,
   `docs/ROADMAP.md`, `docs/adr/`.
+
+```yaml direction
+version: 1
+answered: 2026-09-25 robert-claude-tower
+purpose: 'MCP server driving Cline in VS Code: rich task lifecycle tools so agents can steer Cline work.'
+done_when:
+- 'Retired: useful pieces rolled into AgentFlow.'
+do_not:
+- Never let MCP-driven Cline run destructive vscode or shell commands.
+audience: work
+hours_per_week: <1
+stakes: low
+```
