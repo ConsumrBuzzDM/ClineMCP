@@ -1,5 +1,7 @@
 # ClineMCP - Direction
 
+> **Status 2026-10-01: RETIRED.** Folded into AgentFlow; code preserved, no new work. The sections below are historical.
+
 *Drafted 2026-09-22 by devin (Tower) from the repo's own docs - needs Robert's review before it is treated as intent.*
 
 ## Purpose
@@ -10,21 +12,20 @@ subprocess of ClineMCP so sessions survive TOBOR restarts. Port 8003.
 
 ## Current state
 
-FastAPI + mcp SDK + aiosqlite session persistence; binding contract floor of
+RETIRED 2026-10-01 (preserved, no new work). Was: FastAPI + mcp SDK + aiosqlite session persistence; binding contract floor of
 76/0/0 pytest results (`AGENT_CONTRACT.md`); sessions persisted before
 subprocess start; crash-recovery marks stale "running" sessions failed on
 startup.
 
 ## Next steps
 
-1. Maintenance + phase work via `docs/directives/` per the contract.
-2. Keep the 76-test floor - a count drift is a STOP, not a fix target
+1. None. Retired; roll anything worth keeping into AgentFlow.
+2. If the code is ever touched, keep the 76-test floor - a count drift is a STOP, not a fix target
    (`AGENT_CONTRACT.md`).
 
 ## Definition of done
 
-`uv run pytest --tb=no -q` reports the contract's exact floor; sessions persist
-and self-report across restarts.
+Retired, with useful pieces rolled into AgentFlow; code preserved untouched.
 
 ## Do not
 
@@ -39,7 +40,7 @@ and self-report across restarts.
 
 ```yaml direction
 version: 1
-answered: 2026-09-25 robert-claude-tower
+answered: 2026-10-01 robert (confirmed via Devin)
 purpose: 'MCP server driving Cline in VS Code: rich task lifecycle tools so agents can steer Cline work.'
 done_when:
 - 'Retired: useful pieces rolled into AgentFlow.'
