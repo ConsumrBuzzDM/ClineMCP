@@ -1,3 +1,9 @@
+> **RETIRED 2026-10-01.** ClineMCP is retired and kept for preservation only; no new work.
+> Reason: folded into AgentFlow, which now owns agent session launching and supervision. No
+> AgentFlow package maps one-to-one onto Cline session management, so see AgentFlow
+> (https://github.com/rfd62794/AgentFlow) for the replacement. The code below is untouched. The
+> sections below describe the repo as it was and are historical.
+
 # ClineMCP
 
 Standalone MCP server for managing Cline CLI sessions.
