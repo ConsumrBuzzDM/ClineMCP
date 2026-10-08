@@ -41,11 +41,12 @@ and a skip is recorded, so the question is not asked again.
 
 | Field | Value |
 |---|---|
-| Status | Queued |
+| Status | Done |
 | Assigned to | robert |
 | Branch | - |
 | Base branch | - |
 
 **Status log**
 - 2026-09-25 08:56 · backlog-policy · none → Queued — generated from a missing-direction finding; asks the repo's owner - never auto-approved or dispatched
+- 2026-10-08 11:57 · devin-tower-overseer (delegated) · Queued → Done — note: DIRECTION.md answered 2026-09-25 robert-claude-tower (verified live: yaml direction block complete); row title was a stale scan finding. Done per Robert 2026-10-08.; under delegate.done_if_merged
 <!-- queue:end -->
